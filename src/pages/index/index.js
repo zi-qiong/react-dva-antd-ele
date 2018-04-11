@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import { NavBar, List, WhiteSpace, Card, Grid } from 'antd-mobile';
+import { List, WhiteSpace, Card, Grid } from 'antd-mobile';
 import classNames from 'classnames';
 import styles from './index.less';
 import Head from 'components/Head.js';
@@ -28,7 +28,7 @@ function IndexPage({ hotcityData, groupcityData, cityGuessData }) {
       </Card>
       {(groupcityKey || []).map(item => {
         return (
-          groupcityData[item] && 
+          groupcityData[item] &&
           <div key={item}>
             <WhiteSpace size="lg" />
             <Card>
