@@ -3,6 +3,7 @@ import { connect } from 'dva';
 import { NavBar, List, WhiteSpace, Card, Grid } from 'antd-mobile';
 import classNames from 'classnames';
 import styles from './index.less';
+import Head from 'components/Head.js';
 
 function IndexPage({ hotcityData, groupcityData, cityGuessData }) {
   let groupcityKey = [];
@@ -11,7 +12,7 @@ function IndexPage({ hotcityData, groupcityData, cityGuessData }) {
   }
   return (
     <div className={styles.normal}>
-      <NavBar mode="dark" leftContent="ele.me" />
+      <Head />
       <List>
         <List.Item extra="定位不准时，请在城市列表中选择">当前定位城市：</List.Item>
         <List.Item arrow="horizontal" onClick={() => {console.log(cityGuessData.id);}}><span className={styles['text-blue']}>{cityGuessData.name}</span></List.Item>
@@ -27,6 +28,7 @@ function IndexPage({ hotcityData, groupcityData, cityGuessData }) {
       </Card>
       {(groupcityKey || []).map(item => {
         return (
+          groupcityData[item] && 
           <div key={item}>
             <WhiteSpace size="lg" />
             <Card>
