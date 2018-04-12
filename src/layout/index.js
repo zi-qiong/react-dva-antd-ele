@@ -1,6 +1,5 @@
 import React from 'react';
-import { NavBar, Icon } from 'antd-mobile';
-import router from 'umi/router';
+import { NavBar } from 'antd-mobile';
 import './Head.less'
 
 const Head = (props) => {
