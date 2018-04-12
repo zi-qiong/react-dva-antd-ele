@@ -1,4 +1,4 @@
-import { getcaptchas, login } from '../services/login';
+import { getcaptchas, login } from 'services/login';
 import { Toast } from 'antd-mobile';
 import router from 'umi/router';
 

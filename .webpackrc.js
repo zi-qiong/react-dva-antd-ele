@@ -12,6 +12,7 @@ export default {
     "components": path.resolve(__dirname, "./src/components"),
     "models": path.resolve(__dirname, "./src/models"),
     "services": path.resolve(__dirname, "./src/services"),
-    "pages": path.resolve(__dirname, "./src/pages")
+    "pages": path.resolve(__dirname, "./src/pages"),
+    "utils": path.resolve(__dirname, "./src/utils")
   }
 }

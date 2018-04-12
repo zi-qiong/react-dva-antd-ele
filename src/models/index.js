@@ -1,4 +1,4 @@
-import { cityGuess, hotcity, groupcity} from '../services/index';
+import { cityGuess, hotcity, groupcity} from 'services/index';
 
 export default {
   namespace: 'home',

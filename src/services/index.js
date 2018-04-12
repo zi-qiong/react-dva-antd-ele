@@ -1,4 +1,4 @@
-import request from '../../../utils/request';
+import request from 'utils/request';
 
 export function cityGuess() {
   return request('/api/v1/cities?type=guess');

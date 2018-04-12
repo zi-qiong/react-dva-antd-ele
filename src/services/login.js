@@ -1,4 +1,4 @@
-import request from '../../../utils/request';
+import request from 'utils/request';
 
 export function getcaptchas() {
   return request('/api/v1/captchas', {method: 'POST'});
