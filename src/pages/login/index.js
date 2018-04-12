@@ -34,7 +34,7 @@ function Login(login) {
         <InputItem clear error={!!getFieldError('username')} {...getFieldProps('username', {rules: [{ required: true }]})} placeholder="请输入账号">账号</InputItem>
         <InputItem {...getFieldProps('password', {rules: [{ required: true }]})} extra={<Switch {...getFieldProps('switch', { initialValue: false, valuePropName: 'checked'})} />} placeholder="请输入密码" type="password">密码</InputItem>
         <InputItem {...getFieldProps('captcha_code', {rules: [{ required: true }]})} extra={<div className={style['captchas']}>
-          <img src={captchas.code} />
+          <img alt='验证码' src={captchas.code} />
           <div onClick={() => {dispatch({type: 'login/fetch'})}}>
             <div>看不清</div>
             <div className={style['text-blue']}>换一张</div>
