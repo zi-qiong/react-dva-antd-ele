@@ -74,22 +74,22 @@ class City extends React.Component {
   render() {
     const {form, city} = this.props;
     return (
-      <div>
-        <WhiteSpace size="lg" />
+      <div className={styles['ele-cityId']}>
+        <WhiteSpace size='lg' />
         <Card>
           <Card.Body>
-            <WingBlank size="lg">
+            <WingBlank size='lg'>
               <div className={styles['input']}>
                 <InputItem {...form.getFieldProps('keyword', {rules: [{ required: true }]})} placeholder="输入学校、商务楼、地址" />
               </div>
-              <Button onClick={this.search} type="primary">提交</Button>
-              <WhiteSpace size="lg" />
+              <Button onClick={this.search} type='primary'>提交</Button>
+              <WhiteSpace size='lg' />
             </WingBlank>
           </Card.Body>
         </Card>
         {this.state.history && (
           <div>
-            <WingBlank size="lg">
+            <WingBlank size='lg'>
               <p>搜索历史</p>
             </WingBlank>
             <List>

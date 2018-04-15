@@ -11,12 +11,12 @@ function IndexPage({ hotcityData, groupcityData, cityGuessData }) {
     groupcityKey.push(String.fromCharCode(i))
   }
   return (
-    <div className={styles.normal}>
+    <div className={styles['ele-home']}>
       <List>
         <List.Item extra="定位不准时，请在城市列表中选择">当前定位城市：</List.Item>
-        <List.Item arrow="horizontal" onClick={() => {router.push(`/city/${cityGuessData.id}`);}}><span className={styles['text-blue']}>{cityGuessData.name}</span></List.Item>
+        <List.Item arrow='horizontal' onClick={() => {router.push(`/city/${cityGuessData.id}`);}}><span className={styles['text-blue']}>{cityGuessData.name}</span></List.Item>
       </List>
-      <WhiteSpace size="lg" />
+      <WhiteSpace size='lg' />
       <Card>
         <Card.Header title="热门城市" />
         <Card.Body>
@@ -29,7 +29,7 @@ function IndexPage({ hotcityData, groupcityData, cityGuessData }) {
         return (
           groupcityData[item] &&
           <div key={item}>
-            <WhiteSpace size="lg" />
+            <WhiteSpace size='lg' />
             <Card>
               <Card.Header title={item === 'A' ? `${item}（按字母排序）` : item} />
               <Card.Body>
