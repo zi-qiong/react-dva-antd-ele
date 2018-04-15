@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import { WhiteSpace, List, InputItem, WingBlank, Button, Switch, Toast } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import router from 'umi/router';
-import style from './index.less';
+import styles from './index.less';
 
 class Login extends React.Component {
   constructor(props) {
@@ -40,16 +40,16 @@ class Login extends React.Component {
     const {captchas} = login;
     const { getFieldProps, getFieldError } = form;
     return(
-      <div>
+      <div className={styles['login']}>
         <WhiteSpace size="lg" />
         <List>
           <InputItem clear error={!!getFieldError('username')} {...getFieldProps('username', {rules: [{ required: true }]})} placeholder="请输入账号">账号</InputItem>
           <InputItem {...getFieldProps('password', {rules: [{ required: true }]})} extra={<Switch onClick={this.handleClick} {...getFieldProps('switch', { initialValue: false, valuePropName: 'checked'})} />} placeholder="请输入密码" type={this.state.hidden ? 'password' : 'text'}>密码</InputItem>
-          <InputItem maxLength={4} {...getFieldProps('captcha_code', {rules: [{ required: true }]})} extra={<div className={style['captchas']}>
+          <InputItem maxLength={4} {...getFieldProps('captcha_code', {rules: [{ required: true }]})} extra={<div className={styles['captchas']}>
             <img alt='验证码' src={captchas.code} />
             <div onClick={() => {dispatch({type: 'login/fetch'})}}>
               <div>看不清</div>
-              <div className={style['text-blue']}>换一张</div>
+              <div className={styles['text-blue']}>换一张</div>
             </div>
             </div>} placeholder="验证码">验证码</InputItem>
         </List>
@@ -59,7 +59,7 @@ class Login extends React.Component {
         </WingBlank>
         <Button type="primary" onClick={this.handleLogin}>登录</Button>
         <WhiteSpace size="lg" />
-        <div className={style['resetpsw']} onClick={() => {router.push('/forget')}}>重置密码？</div>
+        <div className={styles['resetpsw']} onClick={() => {router.push('/forget')}}>重置密码？</div>
       </div>
     )
   }
