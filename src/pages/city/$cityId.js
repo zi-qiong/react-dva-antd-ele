@@ -44,18 +44,24 @@ class City extends React.Component {
   checkedPlace = (place, index) => {
     let history = getStore('placeHistory');
     let placeHistory = [];
+    let repeat = false;
     if (history) {
-      let checkrepeat = false;
       placeHistory = JSON.parse(history);
-      if (placeHistory.includes(place)) {
-        checkrepeat = true;
-      }
-      if (!checkrepeat) {
-          placeHistory.push(place)
+      placeHistory.map(item => {
+        if (item.name === place.name) {
+          repeat = true;
+        }
+      })
+      if (!repeat) {
+        placeHistory.push(place)
       }
     }else {
       placeHistory.push(place)
     }
+    this.props.dispatch({
+      type: 'city/save',
+      payload: {currentcityData: {}, placeData: []}
+    })
     setStore('placeHistory',placeHistory)
     router.push('/msite')
   }
