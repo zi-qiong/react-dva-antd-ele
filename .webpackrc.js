@@ -13,6 +13,7 @@ export default {
     "models": path.resolve(__dirname, "./src/models"),
     "services": path.resolve(__dirname, "./src/services"),
     "pages": path.resolve(__dirname, "./src/pages"),
-    "utils": path.resolve(__dirname, "./src/utils")
+    "utils": path.resolve(__dirname, "./src/utils"),
+    "assets": path.resolve(__dirname, "./src/assets")
   }
 }

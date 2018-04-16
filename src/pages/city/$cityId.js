@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import {Card, InputItem, Button, WhiteSpace, WingBlank, Toast, List} from 'antd-mobile';
+import {Card, InputItem, Button, WhiteSpace, WingBlank, Toast, List, NavBar, Icon} from 'antd-mobile';
 import { createForm } from 'rc-form';
 import {getStore, setStore, removeStore} from 'utils/localStorage';
 import router from 'umi/router';
@@ -73,8 +73,10 @@ class City extends React.Component {
 
   render() {
     const {form, city} = this.props;
+    const {currentcityData} = city;
     return (
       <div className={styles['ele-cityId']}>
+        <NavBar leftContent={<Icon onClick={() => {router.go(-1);}} type="left" />} rightContent={<div onClick={() => {router.push('/')}}>切换城市</div>}>{currentcityData.name}</NavBar>
         <WhiteSpace size='lg' />
         <Card>
           <Card.Body>

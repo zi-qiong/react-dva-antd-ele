@@ -5,7 +5,8 @@ import router from 'umi/router';
 export default {
   namespace: 'login',
   state: {
-    captchas: {}
+    captchas: {},
+    userInfo: {}
   },
   reducers: {
     save(state, { payload }) {
@@ -23,6 +24,7 @@ export default {
         Toast.info(userInfo.message)
         yield put({type: 'fetch'})
       } else {
+        yield put({ type: 'save', payload: {userInfo} });
         router.go(-1);
       }
     }

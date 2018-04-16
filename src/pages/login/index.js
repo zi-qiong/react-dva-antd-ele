@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import { WhiteSpace, List, InputItem, WingBlank, Button, Switch, Toast } from 'antd-mobile';
+import { WhiteSpace, Icon, List, InputItem, WingBlank, Button, Switch, Toast, NavBar } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import router from 'umi/router';
 import styles from './index.less';
@@ -13,7 +13,7 @@ class Login extends React.Component {
     }
   }
   handleClick = (checked) => {
-    this.setState({hidden: checked})
+    this.setState({hidden: !checked})
   }
   handleLogin = () => {
     const {form, dispatch} = this.props;
@@ -41,6 +41,7 @@ class Login extends React.Component {
     const { getFieldProps, getFieldError } = form;
     return(
       <div className={styles['ele-login']}>
+        <NavBar leftContent={<Icon onClick={() => {router.go(-1);}} type="left" />}>密码登录</NavBar>
         <WhiteSpace size="lg" />
         <List>
           <InputItem clear error={!!getFieldError('username')} {...getFieldProps('username', {rules: [{ required: true }]})} placeholder='请输入账号'>账号</InputItem>
