@@ -1,7 +1,7 @@
 import { cityGuess, hotcity, groupcity} from 'services/index';
 
 export default {
-  namespace: 'msite',
+  namespace: 'profile',
   state: {
   },
   reducers: {
