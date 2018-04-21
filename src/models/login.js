@@ -1,7 +1,7 @@
 import { getcaptchas, login } from 'services/login';
 import { Toast } from 'antd-mobile';
 import router from 'umi/router';
-
+import { setStore } from 'utils/localStorage'
 export default {
   namespace: 'login',
   state: {
@@ -25,6 +25,7 @@ export default {
         yield put({type: 'fetch'})
       } else {
         yield put({ type: 'save', payload: {userInfo} });
+        setStore('user_token',userInfo.id)
         router.go(-1);
       }
     }

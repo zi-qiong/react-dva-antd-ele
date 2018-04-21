@@ -5,17 +5,20 @@ import classNames from 'classnames';
 import router from 'umi/router';
 import styles from './index.less';
 import user from 'assets/user.png';
+import {getStore} from 'utils/localStorage'
 
 function IndexPage({home, login}) {
   const {hotcityData, groupcityData, cityGuessData} = home;
   const {userInfo} = login
+  const user_token = getStore('user_token')
   let groupcityKey = [];
-  for (let i = 65; i <= 90; i++) {
-    groupcityKey.push(String.fromCharCode(i))
-  }
+  Object.keys(groupcityData).map((item) => {
+    groupcityKey.push(item)
+    groupcityKey.sort()
+  })
   return (
     <div className={styles['ele-home']}>
-      <NavBar leftContent={<div onClick={() => {window.location.reload();}}>ele.me</div>} rightContent={userInfo.user_id ? <img src={user} onClick={()=>{router.push('/profile');}} /> : <div onClick={() => {router.push('/login');}}>登录 | 注册</div>} />
+      <NavBar leftContent={<div onClick={() => {window.location.reload();}}>ele.me</div>} rightContent={user_token ? <img src={user} onClick={()=>{router.push('/profile');}} /> : <div onClick={() => {router.push('/login');}}>登录 | 注册</div>} />
       <List>
         <List.Item extra="定位不准时，请在城市列表中选择">当前定位城市：</List.Item>
         <List.Item arrow='horizontal' onClick={() => {router.push(`/city/${cityGuessData.id}`);}}><span className={styles['text-blue']}>{cityGuessData.name}</span></List.Item>

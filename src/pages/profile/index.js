@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-
+import Footer from '../../components/Footer'
 class Msite extends React.Component {
   constructor(props) {
     super(props)
@@ -10,7 +10,7 @@ class Msite extends React.Component {
   render() {
     return(
       <div>
-        111
+        <Footer activeTab={3}/>
       </div>
     )
   }
