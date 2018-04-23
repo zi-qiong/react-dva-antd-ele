@@ -31,11 +31,10 @@ class Footer extends Component {
     }
   }
   componentWillMount() {
-    let newFootItem = this.state.footItem[this.props.activeTab]
-    newFootItem.active = true
-    let newArr = [].concat(this.state.footItem)
+    let newFootItem = [...this.state.footItem]
+    newFootItem[this.props.activeTab].active = true
     this.setState({
-      footItem:newArr
+      footItem:newFootItem
     })
   }
   handleClick(){
