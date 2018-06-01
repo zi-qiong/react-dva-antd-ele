@@ -14,18 +14,22 @@ export default {
   },
   effects: {
     *fetch({ payload }, { call, put }) {
-      const userInfo = {}
-      if (getStore('user_token')) {
-        userInfo = yield call(getUserInfo, getStore('user_token'));
+      const userId = getStore('user_token')
+      if (userId) {
+        const userInfo = yield call(getUserInfo, userId);
+        yield put({
+          type: 'save',
+          payload: {userInfo: userInfo}
+        });
       }
-      yield put({
-        type: 'save',
-        payload: {userInfo: userInfo}
-      });
     },
-    *loginOut({payload}, { call }) {
+    *loginOut({payload}, { call, put }) {
       yield call(loginOut)
       router.push('/profile')
+      yield put({
+        type: 'save',
+        payload: {userInfo: {}}
+      });
     }
   },
   subscriptions: {
