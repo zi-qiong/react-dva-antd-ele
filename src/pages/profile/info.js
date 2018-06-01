@@ -3,7 +3,6 @@ import { connect } from 'dva';
 import { NavBar, Icon, WhiteSpace, List, Button, Modal } from 'antd-mobile';
 import router from 'umi/router';
 import { removeStore } from 'utils/localStorage'
-import Footer from '../../components/Footer'
 
 class ProfileInfo extends React.Component {
   constructor(props) {
@@ -13,7 +12,7 @@ class ProfileInfo extends React.Component {
   }
 
   showAlert = () => {
-    const alertInstance = Modal.alert('退出', '是否退出登录', [
+    Modal.alert('退出', '是否退出登录', [
       { text: '再等等', onPress: () => console.log('cancel'), style: 'default' },
       { text: '退出登录', onPress: () => {
         removeStore('user_token')

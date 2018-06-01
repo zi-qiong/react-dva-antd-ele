@@ -9,7 +9,6 @@ import {getStore} from 'utils/localStorage'
 
 function IndexPage({home, login}) {
   const {hotcityData, groupcityData, cityGuessData} = home;
-  const {userInfo} = login
   const user_token = getStore('user_token')
   let groupcityKey = [];
   Object.keys(groupcityData).map((item) => {
