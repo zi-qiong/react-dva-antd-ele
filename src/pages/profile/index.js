@@ -3,6 +3,7 @@ import { connect } from 'dva';
 import { NavBar, Icon, Flex, List, WhiteSpace } from 'antd-mobile';
 import router from 'umi/router';
 import classNames from 'classnames';
+import { getStore } from 'utils/localStorage'
 import Footer from '../../components/Footer'
 import styles from './index.less'
 class Profile extends React.Component {
@@ -15,9 +16,14 @@ class Profile extends React.Component {
     const { profile: {userInfo = {}} } = this.props
     return(
       <div>
-        <NavBar mode="dark" icon={<Icon type="left" />} onLeftClick={()=>{router.push('/')}}>我的</NavBar>
+        <NavBar mode="dark" icon={<Icon type="left" />} onLeftClick={()=>{ router.push('/')}}>我的</NavBar>
         <List>
-          <List.Item arrow="horizontal" thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png" multipleLine onClick={() => {router.push('/profile/info')}}>
+          <List.Item arrow="horizontal" thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png" multipleLine
+            onClick={() => {if (getStore('user_token')) {
+              router.push('/profile/info')
+            } else {
+              router.push('/login')
+            }}}>
             {userInfo.username || '登录/注册'}<List.Item.Brief>{userInfo.mobile || '暂无绑定手机号'}</List.Item.Brief>
           </List.Item>
         </List>
