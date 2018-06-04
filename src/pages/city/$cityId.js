@@ -63,6 +63,7 @@ class City extends React.Component {
       payload: {currentcityData: {}, placeData: []}
     })
     setStore('placeHistory',placeHistory)
+    setStore('currentPlace',place)
     router.push('/msite')
   }
 

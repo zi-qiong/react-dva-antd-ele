@@ -1,8 +1,10 @@
-import { cityGuess, hotcity, groupcity} from 'services/index';
+import { msiteAddress, msiteFoodTypes } from 'services/msite';
 
 export default {
   namespace: 'msite',
   state: {
+    msiteAddressData: {},
+    FoodTypesData: []
   },
   reducers: {
     save(state, { payload }) {
@@ -11,19 +13,12 @@ export default {
   },
   effects: {
     *fetch({ payload }, { call, put }) {
+      const msiteAddressData = yield call(msiteAddress, payload.geohash)
+      const FoodTypesData = yield call(msiteFoodTypes, payload.geohash)
       yield put({
         type: 'save',
-        payload: {}
+        payload: {msiteAddressData, FoodTypesData}
       });
     },
-  },
-  subscriptions: {
-    setup({ dispatch, history }) {
-      return history.listen(({ pathname }) => {
-        if (pathname === '/msite') {
-          dispatch({ type: 'fetch' });
-        }
-      });
-    },
-  },
+  }
 };

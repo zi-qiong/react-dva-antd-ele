@@ -16,7 +16,7 @@ class Profile extends React.Component {
     const { profile: {userInfo = {}} } = this.props
     return(
       <div>
-        <NavBar mode="dark" icon={<Icon type="left" />} onLeftClick={()=>{ router.push('/')}}>我的</NavBar>
+        <NavBar mode="dark" icon={<Icon type="left" />} onLeftClick={()=>{ router.go(-1)}}>我的</NavBar>
         <List>
           <List.Item arrow="horizontal" thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png" multipleLine
             onClick={() => {if (getStore('user_token')) {

@@ -27,7 +27,7 @@ class ProfileInfo extends React.Component {
     const { profile: {userInfo = {}} } = this.props
     return(
       <div>
-        <NavBar mode="dark" icon={<Icon type="left" />} onLeftClick={()=>{router.push('/profile')}}>账户信息</NavBar>
+        <NavBar mode="dark" icon={<Icon type="left" />} onLeftClick={()=>{router.go(-1)}}>账户信息</NavBar>
         <WhiteSpace />
         <List>
           <List.Item extra="extra content" arrow="horizontal" onClick={() => {}}>
