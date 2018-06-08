@@ -1,10 +1,9 @@
 import React from 'react';
 import { connect } from 'dva';
-import { NavBar, Icon, Grid, List, WhiteSpace, Carousel } from 'antd-mobile';
+import { NavBar, Icon, Grid, List, WhiteSpace } from 'antd-mobile';
 import user from 'assets/user.png';
 import router from 'umi/router';
 import {getStore} from 'utils/localStorage'
-import _ from 'lodash'
 import styles from './index.less'
 import Footer from '../../components/Footer'
 
@@ -23,30 +22,24 @@ class Msite extends React.Component {
   }
   render() {
     const user_token = getStore('user_token')
-    const { msite: {msiteAddressData = {}, FoodTypesData = []} } = this.props
-    const data = _.chunk(FoodTypesData, 8)
+    const { msite: {msiteAddressData = {}, FoodTypesData = [], shopListData = []} } = this.props
     return(
       <div>
         <NavBar mode="dark" icon={<Icon type="search" />}
         onLeftClick={()=>{ router.go(-1)}}
         rightContent={user_token ? <img src={user} onClick={()=>{router.push('/profile');}} /> : <div onClick={() => {router.push('/login');}}>登录 | 注册</div>}
         ><a href='/'>{msiteAddressData.name}</a></NavBar>
-        <Carousel>
-          {data.map((item, index) => {
-            return <Grid data={data[index]} columnNum={4}
-            renderItem={dataItem => (
-            <div>
-              <img src={`https://fuss10.elemecdn.com/${dataItem.image_url}`} />
-              <div>{dataItem.title}</div>
-            </div>
-          )} />
-          })}
-        </Carousel>
+        <Grid data={FoodTypesData} isCarousel renderItem={dataItem => (
+          <div>
+            <img style={{width: 46, height: 46, paddingBottom: 20}} src={`https://fuss10.elemecdn.com/${dataItem.image_url}`} />
+            <div>{dataItem.title}</div>
+          </div>
+        )} />
         <WhiteSpace size='lg' />
         <List renderHeader={() => '附近商家'}>
-          <List.Item>12333</List.Item>
-          <List.Item>12333</List.Item>
-          <List.Item>12333</List.Item>
+          {shopListData.map(item => {
+            return <List.Item>123</List.Item>
+          })}
         </List>
         <Footer activeTab={0}/>
       </div>
